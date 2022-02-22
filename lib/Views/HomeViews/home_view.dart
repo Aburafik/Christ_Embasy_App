@@ -9,31 +9,32 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("HOME VIEW"),
-          actions: [CircleAvatar(),SizedBox(width: 3,)],
+          title: Text("HOME"),
+          actions: const [
+            CircleAvatar(),
+            SizedBox(
+              width: 3,
+            )
+          ],
           iconTheme: IconThemeData(color: ColorTheme.primaryColor),
           backgroundColor: Colors.white,
         ),
-        drawer: const Drawer(),
+        drawer: AppDrawer(),
         body: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 25),
+          padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
           child: Center(
             child: GridView.builder(
                 itemCount: sections.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    mainAxisSpacing: 70,
+                    mainAxisSpacing: 60,
                     crossAxisSpacing: 15,
-                    // mainAxisExtent: 80,
-                    
                     crossAxisCount: 3),
                 itemBuilder: (context, index) => SectionsCard(
                       index: index,
-                    )
-                // Column(
-                //   children: [],
-                // ),
-                ),
+                    )),
           ),
         ));
   }
 }
+
+

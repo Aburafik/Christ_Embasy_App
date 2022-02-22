@@ -7,7 +7,7 @@ class GroupPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("HOUSE GROUPS"),
+        title: const Text("HOUSE GROUPS"),
       ),
       body: ListView.separated(
           itemBuilder: (context, index) => const ListTile(
@@ -15,7 +15,7 @@ class GroupPage extends StatelessWidget {
                 title: Text("Group Name"),
                 trailing: Icon(Icons.arrow_forward_ios_sharp),
               ),
-          separatorBuilder: (context, index) => Divider(),
+          separatorBuilder: (context, index) => const Divider(),
           itemCount: 3),
     );
   }

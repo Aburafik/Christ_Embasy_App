@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:my_church_app/Utils/color_themes.dart';
+import 'package:my_church_app/Views/HomeViews/home_view.dart';
 
 class WelcomeView extends StatelessWidget {
   const WelcomeView({Key? key}) : super(key: key);
@@ -15,15 +16,15 @@ class WelcomeView extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Column(
-          
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
-                height: MediaQuery.of(context).size.height/5,
+                height: MediaQuery.of(context).size.height / 5,
               ),
-              Text("WELLCOME!", style: textStyle.copyWith(fontWeight: FontWeight.bold)),
+              Text("WELLCOME!",
+                  style: textStyle.copyWith(fontWeight: FontWeight.bold)),
               Expanded(
                 child: const SizedBox(
                   // height: 120,
@@ -37,19 +38,31 @@ class WelcomeView extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   "Believers Go",
-                  style: textStyle.copyWith(color: Colors.black, fontSize: 25,fontWeight: FontWeight.bold),
+                  style: textStyle.copyWith(
+                      color: Colors.black,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold),
                 ),
               ),
-              Text("We are most delighted to welcome you to church"),
-              Text("as you walk into church, you will be bless"),
-              Text("tremendously in Jesus name' Amen!"),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 15),
+                child: Column(
+                  children: [
+                    Text("We are most delighted to welcome you to church"),
+                    Text("as you walk into church, you will be bless"),
+                    Text("tremendously in Jesus name' Amen!"),
+                  ],
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 30),
                 child: CommonButton(
                   title: "WALK INTO CHURCH",
-                  onpress: () {},
+                  onpress: () {
+                    Navigator.push(
+                        context, MaterialPageRoute(builder: (_) => HomeView()));
+                  },
                   color: ColorTheme.primaryColor,
-                  
                 ),
               )
             ],
@@ -61,7 +74,8 @@ class WelcomeView extends StatelessWidget {
 }
 
 class CommonButton extends StatelessWidget {
-  CommonButton({Key? key, this.onpress, this.title,this.color}) : super(key: key);
+  CommonButton({Key? key, this.onpress, this.title, this.color})
+      : super(key: key);
   void Function()? onpress;
   String? title;
   Color? color;
@@ -73,7 +87,10 @@ class CommonButton extends StatelessWidget {
       color: color,
       onPressed: onpress,
       child: Center(
-        child: Text(title!,style: TextStyle(color: ColorTheme.secondaryColor),),
+        child: Text(
+          title!,
+          style: TextStyle(color: ColorTheme.secondaryColor),
+        ),
       ),
     );
   }

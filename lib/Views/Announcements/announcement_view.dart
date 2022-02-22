@@ -10,18 +10,27 @@ class AnnouncementPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("ANNOINCEMENTS"),
+        title: const Text("ANNOINCEMENTS"),
       ),
       body: Center(
-        child: Text("No announcement"),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              "images/announcement.png",
+              height: 50,
+            ),
+            const Text("No announcement"),
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: ColorTheme.primaryColor,
         onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (_) => CreateAnnouncement()));
+          Navigator.push(context,
+              MaterialPageRoute(builder: (_) => const CreateAnnouncement()));
         },
-        child: const Text("Post"),
+        child: const Icon(Icons.add),
       ),
     );
   }
@@ -51,9 +60,6 @@ class _CreateAnnouncementState extends State<CreateAnnouncement> {
       await showTimePicker(
         context: context,
         initialTime: TimeOfDay.now(),
-        // firstDate: DateTime.now(),
-        // lastDate: DateTime.now(),
-        // initialDate: DateTime.now()
       );
     }
 
@@ -98,7 +104,8 @@ class _CreateAnnouncementState extends State<CreateAnnouncement> {
             titleText(text: "Select Time"),
             TextInputFields(
               suffixIcon: IconButton(
-                  onPressed: () => _showTimePicker(), icon: Icon(Icons.watch_later_outlined)),
+                  onPressed: () => _showTimePicker(),
+                  icon: Icon(Icons.watch_later_outlined)),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -134,28 +141,34 @@ class _CreateAnnouncementState extends State<CreateAnnouncement> {
 }
 
 class TextInputFields extends StatelessWidget {
-  TextInputFields({Key? key, this.maxLines, this.suffixIcon}) : super(key: key);
+  TextInputFields({Key? key, this.maxLines, this.suffixIcon, this.hintText})
+      : super(key: key);
 
   int? maxLines;
   Widget? suffixIcon;
+  String? hintText;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       maxLines: maxLines == null ? 1 : maxLines,
       decoration: InputDecoration(
+          contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+          hintText: hintText,
+          hintStyle: const TextStyle(color: Colors.grey),
           suffixIcon: suffixIcon,
           focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(
-                color: Colors.grey,
-              )),
+            borderRadius: BorderRadius.circular(10),
+            borderSide: const BorderSide(
+              color: Colors.white,
+            ),
+          ),
           filled: true,
-          border: const OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.white, width: 10)),
+          border: InputBorder.none,
           enabledBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Colors.white, width: 10),
-              borderRadius: BorderRadius.circular(10)),
+            borderSide: const BorderSide(color: Colors.white, width: 10),
+            borderRadius: BorderRadius.circular(10),
+          ),
           fillColor: ColorTheme.secondaryColor),
     );
   }

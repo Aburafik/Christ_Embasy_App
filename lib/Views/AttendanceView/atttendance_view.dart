@@ -6,8 +6,8 @@ class AttendanceHistoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("My ATTENDANCE LOG"),),
-      body: Center(
+      appBar: AppBar(title: const Text("MY ATTENDANCE LOG"),),
+      body: const Center(
         child: Text("Attendance Logs"),
       ),
     );

@@ -5,6 +5,7 @@ import 'package:my_church_app/Views/Announcements/announcement_view.dart';
 import 'package:my_church_app/Views/AttendanceView/atttendance_view.dart';
 import 'package:my_church_app/Views/ChurchGroups/groups_view.dart';
 import 'package:my_church_app/Views/ClockInView/clock_in_view.dart';
+import 'package:my_church_app/Views/RequestPrayers/request_prayer.dart';
 
 class SectionsCard extends StatelessWidget {
   SectionsCard({Key? key, this.index}) : super(key: key);
@@ -16,7 +17,7 @@ class SectionsCard extends StatelessWidget {
         customRouter(index, context);
       },
       child: Container(
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.all(5),
         child: Column(
           children: [
             Expanded(
@@ -59,29 +60,76 @@ customRouter(pageIndex, context) {
                 padding: EdgeInsets.all(8.0),
                 child: CircularProgressIndicator(
                     backgroundColor: Colors.red,
-                    valueColor: AlwaysStoppedAnimation<Color>(Colors.white)
-                    // valueColor: ShowValueIndicator.never
-
-                    )),
+                    valueColor: AlwaysStoppedAnimation<Color>(Colors.white))),
           ),
         ),
-        duration: Duration(seconds: 15),
-        // target: Offset(520, 520)
+        duration: const Duration(seconds: 15),
       );
-    // Navigator.push(
-    //     context, MaterialPageRoute(builder: (_) =>  BotToast.showAnimationWidget(toastBuilder: ()=>, animationDuration: Duration(),)
-    //     ,)
 
     case 1:
-      return Navigator.push(
-          context, MaterialPageRoute(builder: (_) => AttendanceHistoryPage()));
+      return Navigator.push(context,
+          MaterialPageRoute(builder: (_) => const AttendanceHistoryPage()));
     case 2:
       return Navigator.push(
-          context, MaterialPageRoute(builder: (_) => GroupPage()));
+          context, MaterialPageRoute(builder: (_) => const GroupPage()));
     case 3:
       return Navigator.push(
-          context, MaterialPageRoute(builder: (_) => AnnouncementPage()));
+          context, MaterialPageRoute(builder: (_) => const AnnouncementPage()));
+    case 4:
+      return Navigator.push(
+          context, MaterialPageRoute(builder: (_) => const RequestPrayer()));
     default:
       {}
+  }
+}
+
+class AppDrawer extends StatelessWidget {
+  const AppDrawer({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: Column(
+        children: [
+          const UserAccountsDrawerHeader(
+            margin: EdgeInsets.zero,
+            currentAccountPicture: CircleAvatar(),
+            accountName: Text("User Name"),
+            accountEmail: Text("user@gmail.com"),
+            decoration: BoxDecoration(color: ColorTheme.primaryColor),
+          ),
+          DrawerTiles(
+            icon: Icons.person,
+            title: "Profile",
+            onTap: () {},
+          ),
+          DrawerTiles(
+            icon: Icons.note,
+            title: "Notes",
+            onTap: () {},
+          ),
+          DrawerTiles(
+            icon: Icons.logout,
+            title: "Log Out",
+            onTap: () {},
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class DrawerTiles extends StatelessWidget {
+  DrawerTiles({Key? key, this.onTap, this.title, this.icon}) : super(key: key);
+
+  final String? title;
+  void Function()? onTap;
+  IconData? icon;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(onTap: onTap, title: Text(title!), leading: Icon(icon));
   }
 }
