@@ -2,25 +2,26 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:my_church_app/Utils/color_themes.dart';
-import 'package:my_church_app/Views/HomeViews/home_view.dart';
 import 'package:my_church_app/Views/welcome_view.dart';
+import 'package:page_transition/page_transition.dart';
 
 class IntroScreen extends StatefulWidget {
   const IntroScreen({Key? key}) : super(key: key);
   @override
   State<IntroScreen> createState() => _IntroScreenState();
-
-// ignore: non_constant_identifier_names
-
 }
 
 class _IntroScreenState extends State<IntroScreen> {
   @override
   void initState() {
     Timer(
-        Duration(seconds: 3),
-        () => Navigator.push(
-            context, MaterialPageRoute(builder: (_) => WelcomeView())));
+        const Duration(seconds: 3),
+        () => Navigator.pushReplacement(
+            context,
+            PageTransition(
+                child: const WelcomeView(),
+                type: PageTransitionType.rightToLeft)));
+
     super.initState();
   }
 
@@ -29,12 +30,8 @@ class _IntroScreenState extends State<IntroScreen> {
     return Scaffold(
       backgroundColor: ColorTheme.primaryColor,
       body: Center(
-        child: CircleAvatar(
-          backgroundColor: Colors.grey,
-          radius: MediaQuery.of(context).size.width / 5,
-          child: Center(
-            child: Icon(Icons.add),
-          ),
+        child: Center(
+          child: Image.asset("images/logo.png"),
         ),
       ),
     );

@@ -77,15 +77,15 @@ class _CreateAnnouncementState extends State<CreateAnnouncement> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Create Annoincement"),
+        title:const Text("Create Announcement"),
       ),
       body: Container(
-        margin: EdgeInsets.all(10),
+        margin:const EdgeInsets.all(10),
         decoration: BoxDecoration(
             color: Colors.grey.shade200,
             borderRadius: BorderRadius.circular(15)),
         child: ListView(
-          padding: EdgeInsets.symmetric(horizontal: 5),
+          padding:const EdgeInsets.symmetric(horizontal: 5),
           children: [
             titleText(text: "Title"),
             TextInputFields(),
@@ -99,13 +99,13 @@ class _CreateAnnouncementState extends State<CreateAnnouncement> {
             TextInputFields(
               suffixIcon: IconButton(
                   onPressed: () => _showDatePicker(),
-                  icon: Icon(Icons.calendar_today)),
+                  icon:const Icon(Icons.calendar_today)),
             ),
             titleText(text: "Select Time"),
             TextInputFields(
               suffixIcon: IconButton(
                   onPressed: () => _showTimePicker(),
-                  icon: Icon(Icons.watch_later_outlined)),
+                  icon:const Icon(Icons.watch_later_outlined)),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -127,7 +127,7 @@ class _CreateAnnouncementState extends State<CreateAnnouncement> {
               title: "Post",
               onpress: () {
                 BoatToast().showLoading();
-                Future.delayed(Duration(seconds: 3), () {
+                Future.delayed(const Duration(seconds: 3), () {
                   BoatToast().stopLoasding();
                 });
               },
@@ -153,7 +153,8 @@ class TextInputFields extends StatelessWidget {
     return TextField(
       maxLines: maxLines == null ? 1 : maxLines,
       decoration: InputDecoration(
-          contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+          contentPadding:
+              const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
           hintText: hintText,
           hintStyle: const TextStyle(color: Colors.grey),
           suffixIcon: suffixIcon,
@@ -181,17 +182,16 @@ class BoatToast {
         child: Card(
           color: Colors.grey,
           child: Padding(
-              padding: EdgeInsets.all(8.0),
-              child: CircularProgressIndicator(
-                  backgroundColor: Colors.red,
-                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white)
-                  // valueColor: ShowValueIndicator.never
+            padding: EdgeInsets.all(8.0),
+            child: CircularProgressIndicator(
+                backgroundColor: Colors.red,
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.white)
 
-                  )),
+                ),
+          ),
         ),
       ),
-      // duration: Duration(seconds: 15),
-      // target: Offset(520, 520)
+     
     );
   }
 

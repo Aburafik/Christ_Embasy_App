@@ -30,6 +30,7 @@ dependencies:
   flutter:
     sdk: flutter
   bot_toast: ^4.0.1
+  page_transition: ^2.0.5
 
 
   # The following adds the Cupertino Icons font to your application.

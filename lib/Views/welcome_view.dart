@@ -2,7 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:my_church_app/Utils/color_themes.dart';
-import 'package:my_church_app/Views/HomeViews/home_view.dart';
+
+import 'Home/home_view.dart';
 
 class WelcomeView extends StatelessWidget {
   const WelcomeView({Key? key}) : super(key: key);

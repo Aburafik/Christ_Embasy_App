@@ -2,13 +2,12 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:my_church_app/Utils/color_themes.dart';
 import 'package:my_church_app/Views/Announcements/announcement_view.dart';
-import 'package:my_church_app/Views/AttendanceView/atttendance_view.dart';
-import 'package:my_church_app/Views/ChurchGroups/groups_view.dart';
-import 'package:my_church_app/Views/ClockInView/clock_in_view.dart';
+import 'package:my_church_app/Views/Attendance/atttendance_view.dart';
+import 'package:my_church_app/Views/Groups/groups_view.dart';
 import 'package:my_church_app/Views/RequestPrayers/request_prayer.dart';
 
 class SectionsCard extends StatelessWidget {
-  SectionsCard({Key? key, this.index}) : super(key: key);
+  const SectionsCard({Key? key, this.index}) : super(key: key);
   final int? index;
   @override
   Widget build(BuildContext context) {
@@ -17,7 +16,7 @@ class SectionsCard extends StatelessWidget {
         customRouter(index, context);
       },
       child: Container(
-        padding: EdgeInsets.all(5),
+        padding: const EdgeInsets.all(5),
         child: Column(
           children: [
             Expanded(
@@ -30,7 +29,6 @@ class SectionsCard extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
           border: Border.all(color: ColorTheme.primaryColor, width: 1),
-          // color: Colors.red.withOpacity(0.4),
         ),
         //  margin: EdgeInsets.symmetric(h),
       ),
@@ -114,6 +112,11 @@ class AppDrawer extends StatelessWidget {
             icon: Icons.logout,
             title: "Log Out",
             onTap: () {},
+          ),
+          const Spacer(),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text("v.1.0.0"),
           )
         ],
       ),
@@ -122,14 +125,17 @@ class AppDrawer extends StatelessWidget {
 }
 
 class DrawerTiles extends StatelessWidget {
-  DrawerTiles({Key? key, this.onTap, this.title, this.icon}) : super(key: key);
+  const DrawerTiles({Key? key, this.onTap, this.title, this.icon}) : super(key: key);
 
   final String? title;
-  void Function()? onTap;
-  IconData? icon;
+ final void Function()? onTap;
+ final IconData? icon;
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(onTap: onTap, title: Text(title!), leading: Icon(icon));
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 20),
+      child: ListTile(onTap: onTap, title: Text(title!), leading: Icon(icon)),
+    );
   }
 }
