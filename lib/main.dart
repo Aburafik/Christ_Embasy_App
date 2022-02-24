@@ -1,6 +1,7 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:my_church_app/Utils/color_themes.dart';
+import 'package:my_church_app/Views/Auth/sign_up.dart';
 import 'package:my_church_app/Views/into_view.dart';
 
 //Warning: Don't arbitrarily adjust the position of calling the BotToastInit function
@@ -24,6 +25,6 @@ void main() {
     home: const
         // HomeView()
         // WelcomeView(),
-        IntroScreen(),
-  ));
+        // IntroScreen(),
+SignUpPage()  ));
 }
