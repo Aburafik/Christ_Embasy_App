@@ -28,7 +28,8 @@ class _IntroScreenState extends State<IntroScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorTheme.primaryColor,
+      backgroundColor:Color(0xff16222A),
+      //  ColorTheme.primaryColor,
       body: Center(
         child: Center(
           child: Image.asset("images/logo.png"),

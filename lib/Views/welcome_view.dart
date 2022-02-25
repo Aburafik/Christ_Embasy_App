@@ -1,4 +1,3 @@
-// ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:my_church_app/Utils/color_themes.dart';
@@ -15,6 +14,7 @@ class WelcomeView extends StatelessWidget {
         .headline2!
         .copyWith(color: ColorTheme.primaryColor, fontSize: 35);
     return Scaffold(
+      backgroundColor: Color(0xff16222A),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -46,9 +46,9 @@ class WelcomeView extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15),
+                padding:const EdgeInsets.symmetric(horizontal: 15),
                 child: Column(
-                  children: [
+                  children:const [
                     Text("We are most delighted to welcome you to church"),
                     Text("as you walk into church, you will be bless"),
                     Text("tremendously in Jesus name' Amen!"),
